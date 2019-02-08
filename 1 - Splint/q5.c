@@ -2,12 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
-static int *f1 () {
-	int value;
+/*@null@*/ static int *f1 () {
+	int *value = (int *)malloc(sizeof(int));
+	if (value == NULL) {
+		return NULL;
+	}
 	printf("Input Number: ");
-	(void) scanf("%d", &value);
-
-	return &value;
+	(void) scanf("%d", value);
+	return value;
 }
 
 /*@observer@*/ static char* f2() {
@@ -16,9 +18,17 @@ static int *f1 () {
 
 int main () {
 
-	int *retvalue;
+	/*@only@*/ int *retvalue;
 	char *str = (char *) malloc (sizeof(char));
 	retvalue = f1();
+
+	if (retvalue == NULL) {
+		if (str != NULL) {
+			free(str);
+		}
+		return(0);
+	}
+
 	if (*retvalue > 0 && str != NULL) {
 		strcpy(str, f2());
 		printf("String : %s \n", str);

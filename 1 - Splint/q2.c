@@ -13,7 +13,9 @@ int main () {
 		p = &test;
 	}
 	else {
-		if (p) *p = 123;
+		if (p) {
+			*p = 123;
+		}
 	}
 	
 	return 1;

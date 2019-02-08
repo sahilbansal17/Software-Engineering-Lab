@@ -7,7 +7,7 @@ struct check {
 	size_t ncount;
 };
 
-static int f1 (struct check *testc) {
+static int f1 (/*@out@*/ struct check *testc) {
 	char *b = (char *) malloc(sizeof(char));
 	if (b == NULL) return 0;
 	printf("Input String: ");
@@ -17,14 +17,12 @@ static int f1 (struct check *testc) {
 	return 1;
 }
 
-static char * f2() {
+/*@null@*/ static char * f2() {
 	char * str = (char *) malloc(sizeof(char));
 	if (str != NULL) {
 		strcpy(str, "TESTING");
-		return str;
 	}
-	/*@null@*/
-	return NULL;
+	return str;
 }
 
 int main () {
@@ -34,7 +32,6 @@ int main () {
 		exit(0);
 	}
 
-	/*@out@*/
 	if (f1(c) == 0) {
 		if(c->sname != NULL) {
 			free(c->sname);
