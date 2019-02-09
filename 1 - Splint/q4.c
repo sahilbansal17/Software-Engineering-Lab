@@ -1,24 +1,28 @@
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct check {
 	char * sname;
 	size_t ncount;
 };
 
-static int f1 (struct check *testc) {
+// the annotation "out" fixes the error 3 as now the parameter of the function
+// can contain undefined fields
+static int f1 (/*@out@*/ struct check *testc) {
 	char *b = (char *) malloc(sizeof(char));
 	if (b == NULL) return 0;
 	printf("Input String: ");
 	(void) scanf("%s", b);
-	if (testc->sname) { // fixes the error 1
-		free(testc->sname);
-	}
+	// the error 1 no longer exists as paramter testc can have undefined fields
 	testc->sname = b; // error 1: memory not released before assignment
 	testc->ncount = strlen(b);
 	return 1;
 }
 
-static char * f2() {
+// the annotation "null" before the function return type fixes the error 2
+// as now NULL value can be returned by the function
+/*@null@*/ static char * f2() {
 	char * str = (char *) malloc(sizeof(char));
 	if (str != NULL) {
 		strcpy(str, "TESTING");
@@ -38,12 +42,13 @@ int main () {
 			free(c->sname);
 		}
 	} // error 4: storage c->sname is released in one path, but live in another
-	else if (c->sname != NULL) { // fixes the error 4
-		free(c->sname);
+	else { // fixes error 4
+		if ((c->sname) != NULL) {
+			free(c->sname);
+		}
 	}
 
 	c->sname = f2();
-
 	if (c->sname != NULL) {
 		c->ncount = strlen(c->sname);
 	}
@@ -53,5 +58,3 @@ int main () {
 	}
 	return 1;
 }
-
-// error 2 and error 3 can't be directly fixed without using annotations
