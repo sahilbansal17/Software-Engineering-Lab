@@ -1,0 +1,131 @@
+\documentclass[]{article}
+\usepackage{graphicx, float}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{multirow}
+
+%opening
+\lstset{
+	language=[x86masm]Assembler
+}
+
+\title{\centering CSP740 : Software Engineering \\Assignment - 2 Splint}
+\author{Sahil\\  2016UCS0008}
+
+\begin{document}
+	
+	\maketitle	
+	\section{Question No. 3}
+	\large
+	\begin{longtable}{ |p{0.5cm}|p{0.75cm}|p{3cm}|p{7cm}|  }
+		\hline
+		S. No & Line No.	&	Error Name	&	Brief Explanation	\\
+		\hline
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{int kbhit(void)}} \\
+		\hline
+		1 & 78 & Undefined fields & Parameter \textbf{oldt} passed to the function \textbf{tcgetattr} contains 8 undefined fields. \\
+		\hline
+		2 & 78 & Ignored return value & Return value from \textbf{tcgetattr} is ignored. \\
+		\hline
+		3 & 81 & Ignored return value & Return value from \textbf{tcsetattr} is ignored. \\
+		\hline
+		4 & 82 & Null storage as parameter & The function \textbf{fcntl} accepts no null paramter \\
+		\hline
+		5 & 83 & Ignored return value & Return value from \textbf{fcntl} is ignored. \\
+		\hline
+		6 & 87 & Ignored return value & Return value from \textbf{tcsetattr} is ignored. \\
+		\hline
+		7 & 88 & Ignored return value & Return value from \textbf{fcntl} is ignored. \\
+		\hline 
+		8 & 92 & Ignored return value & Return value from \textbf{ungetc} is ignored. \\
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{int main()}} \\
+		\hline 
+		9 & 110 & Undefined fields & Parameter \textbf{snake\_1} passed to the function \textbf{snake\_init} contains 8 undefined fields. \\
+		\hline 
+		10 & 111 & Undefined fields & Parameter \textbf{pos1} passed to the function \textbf{pos\_init} contains 2 undefined fields. \\
+		\hline 
+		11 & 112 & Undefined fields & Parameter \textbf{food1} passed to the function \textbf{food\_init} contains 3 undefined fields. \\
+		\hline 
+		12 & 117 & Ignored return value  & Return value from \textbf{system("clear")} is ignored. \\
+		\hline 
+		13 & 118 & Ignored return value & Return value from \textbf{system("stty -echo")} is ignored.\\ 
+		\hline 
+		14 & 127 & Ignored return value & Return value from \textbf{system("/bin/stty raw")} is ignored.\\
+		\hline 
+		15 & 132 & Type Mismatch & Operand of ! (not) is \textit{non-boolean}, integer type-casted to be a boolean \\
+		\hline
+		16 & 137 & Type Mismatch & Operand of ! (not) is \textit{non-boolean}. \textbf{khbit} returns int, but operated by ! as boolean. \\
+		\hline 
+		17 & 139 & Type Mismatch & Function \textbf{usleep} expects arg1 to be \textit{\_\_useconds\_t} but gets int. \\
+		\hline 
+		18 & 139 & Ignored return value & Return value from \textbf{usleep} is ignored. \\
+		\hline 
+		19 & 141 & Type Mismatch & Test expression for \textbf{if} is not boolean but int. \\ 
+		\hline 
+		20 & 150 & Type Mismatch & Assignment of int (return value \textbf{getchar}) to char (snake1.direction) \\
+		\hline 
+		21 & 156 & Ignored return value & Return value from \textbf{system("/bin/stty raw")} is ignored. \\
+		\hline 
+		22 & 157 & Ignored return value & Return value from \textbf{system("stty -echo")} is ignored. \\
+		\hline 
+		23 & 158 & Ignored return value & Return value from \textbf{system("clear")} is ignored. \\
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{void snake\_init()}} \\
+		\hline 
+		24 & 174 & Type Mismatch & Assignment of int (100) to char(snake1$->$direction). \\
+		\hline 
+		25 & 175 & Type Mismatch & Assignment of int (115) to char(snake1$->$prev\_direction) \\
+		\hline 
+		26 & 183 & Inconsistent definition & Parameter \textbf{pos1} of \textit{snake\_place()} redeclared as possibly NULL storage, previously without NULL qualifier. \\
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{void snake\_place()}} \\
+		\hline 
+		27 & 190 & Dereferencing a possibly NULL pointer & Parameter \textbf{pos1} with null qualifier is dereferenced. \\
+		\hline 
+		28 & 219 & Inconsistent definition & Parameter \textbf{score} of \textit{snake\_move()} redeclared as possibly NULL storage\\
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{void snake\_move()}} \\
+		\hline 
+		29 & 230 & Dereferencing a possibly NULL pointer & Parameter \textbf{score} with null qualifier is dereferenced. \\
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{Errors in the function} \textit{void move\_head()}} \\
+		\hline  
+		30 & 263 & \multirow{4}{50.0pt}{Type Mismatch} & \multirow{4}{200.0pt}{Comparison between a char and int} \\
+		31 & 272 & &  \\
+		32 & 282 & & \\
+		33 & 292 & & \\
+		\hline 
+		\multicolumn{4}{|c|}{Functions exported but not used outside the file} \\
+		\hline  
+		34 & 58 & \multirow{12}{85.0pt}{Function exported but not used outside the file, should be declared with static keyword} & Function \textbf{snake\_init} \\
+		35 & 59 & & Function \textbf{pos\_init} \\
+		36 & 60 & & Function \textbf{food\_init}\\
+		37 & 61 & & Function \textbf{gotoxy}\\
+		38 & 62 & & Function \textbf{snake\_place}\\
+		39 & 63 & & Function \textbf{snake\_move}\\
+		40 & 64 & & Function \textbf{move\_tail}\\
+		41 & 65 & & Function \textbf{move\_head}\\
+		42 & 66 & & Function \textbf{food\_print} \\
+		43 & 67 & & Function \textbf{game\_over}\\
+		44 & 68 & & Function \textbf{set\_borders}\\
+		45 & 72 & & Function \textbf{kbhit}\\
+		\hline 
+		\multicolumn{4}{|c|}{Library and Header file inclusion related} \\
+		\hline  
+		46 & 9 &\multicolumn{2}{|c|}{ \multirow{3}{*}{Include file matches the name of a POSIX library, but it is not being used.}}  \\
+		47 & 10 & \multicolumn{2}{|c|}{} \\
+		48 & 11 & \multicolumn{2}{|c|}{}  \\
+		\hline
+	\end{longtable} 
+	
+ 	\section{Question No. 4}
+ 	\begin{tabular}{ |p{1cm}|p{1cm}|p{3cm}|p{5cm}|  }
+ 		\hline
+ 		S. No & Line No.	&	Error Name	&	Brief Explanation	\\
+ 		\hline
+ 		\hline
+ 	\end{tabular} 
+
+\end{document}
