@@ -18,7 +18,7 @@
 	\maketitle	
 	\section{Question No. 3}
 	\large
-	\begin{longtable}{ |p{0.5cm}|p{0.75cm}|p{3cm}|p{7cm}|  }
+	\begin{longtable}{ |p{0.5cm}|p{0.75cm}|p{3cm}|p{9cm}|  }
 		\hline
 		S. No & Line No.	&	Error Name	&	Brief Explanation	\\
 		\hline
@@ -30,7 +30,7 @@
 		\hline
 		3 & 81 & Ignored return value & Return value from \textbf{tcsetattr} is ignored. \\
 		\hline
-		4 & 82 & Null storage as parameter & The function \textbf{fcntl} accepts no null paramter \\
+		4 & 82 & Null storage as non-null parameter & In the function \textbf{fcntl}, null storage passed as non-null parameter.  \\
 		\hline
 		5 & 83 & Ignored return value & Return value from \textbf{fcntl} is ignored. \\
 		\hline
@@ -118,14 +118,249 @@
 		47 & 10 & \multicolumn{2}{|c|}{} \\
 		48 & 11 & \multicolumn{2}{|c|}{}  \\
 		\hline
+		
 	\end{longtable} 
 	
+	. \\ \\
+	
  	\section{Question No. 4}
- 	\begin{tabular}{ |p{1cm}|p{1cm}|p{3cm}|p{5cm}|  }
+ 		\begin{longtable}{ |p{0.5cm}|p{0.75cm}|p{3cm}|p{9cm}|  }
  		\hline
  		S. No & Line No.	&	Error Name	&	Brief Explanation	\\
  		\hline
+	 	1 & 9 &\multicolumn{2}{|c|}{ \multirow{3}{*}{Include file matches the name of a POSIX library, but it is not being used.}}  \\
+	 	2 & 10 & \multicolumn{2}{|c|}{} \\
+	 	3 & 11 & \multicolumn{2}{|c|}{}  \\
  		\hline
- 	\end{tabular} 
+ 		4 & 58 & \multirow{15}{70.0pt}{Declaration paramter has name. This can interfere with macro definitions.} & Parameter name \textbf{snake1} in \textbf{snake\_init}\\
+ 		5 & 59 & & Parameter name \textbf{pos1} in \textbf{pos\_init}\\
+ 		6 & 60 & & Parameter name \textbf{food1} in \textbf{food\_init}\\
+ 		7 & 62 & & Parameter name \textbf{snake1} in \textbf{snake\_place}\\
+ 		8 & 62 & & Parameter name \textbf{pos1} in \textbf{snake\_place}\\
+ 		9 & 63 & & Parameter name \textbf{snake1} in \textbf{snake\_move}\\
+ 		10 & 63 & & Parameter name \textbf{pos1} in \textbf{snake\_move}\\
+ 		11 & 63 & & Parameter name \textbf{food1} in \textbf{snake\_move}\\
+ 		12 & 64 & & Parameter name \textbf{snake1} in \textbf{move\_tail}\\
+ 		13 & 64 & & Parameter name \textbf{pos1} in \textbf{move\_tail}\\
+ 		14 & 65 & & Parameter name \textbf{snake1} in \textbf{move\_head}\\
+ 		15 & 65 & & Parameter name \textbf{pos1} in \textbf{move\_tail}\\
+ 		16 & 66 & & Parameter name \textbf{food1} in \textbf{food\_print}\\
+ 		17 & 67 & & Parameter name \textbf{snake1} in \textbf{game\_over}\\
+ 		18 & 67 & & Parameter name \textbf{pos1} in \textbf{game\_over}\\
+ 		\hline 
+ 		19 & 68 & Function declaration without parameter & Function \textbf{set\_borders} has no parameters. \\
+ 		\hline 
+ 		\multicolumn{4}{|c|}{In function \textit{kbhit}} \\
+ 		\hline 
+ 		20 & 78 & Undefined fields & Parameter \textbf{oldt} passed to the function \textbf{tcgetattr} contains 8 undefined fields. \\
+ 		\hline 
+ 		21 & 78 & Undetected modifications possible & The function \textbf{tcgetattr} can modify parameters passed. \\
+ 		\hline 
+ 		22 & 78 & Ignored return value & The return value of \textbf{tcgetattr} is ignored. \\
+ 		\hline 
+ 		23 & 80 & Type Mismatch & Right value of $\&=$ operand is not unsigned int. \\
+ 		\hline 
+ 		24 & 81 & Undetected modifications possible & The function \textbf{tcsetattr} can modify parameters passed. \\
+ 		\hline 
+ 		25 & 81 & Ignored return value & The return value of \textbf{tcsetattr} is ignored. \\
+ 		\hline 
+ 		26 & 82 & Null storage as non-null parameter & In the function \textbf{fcntl}, null storage passed as non-null parameter. \\
+ 		\hline 
+ 		27 & 82,83, 88 & Undetected modifications possible & The function \textbf{fcntl} can modify parameters passed. \\
+ 		\hline 
+ 		28 & 83 & Type Mismatch & Left operand of $|$ is not unsigned int. \\
+ 		\hline 
+ 		29 & 83, 88 & Ignored return value & The return value of \textbf{fcntl} is ignored. \\
+ 		\hline 
+ 		30 & 85, 92 & Function may access file state & The function \textbf{getchar()} can access file system state. It can cause undocumented modification of this state. \\
+ 		\hline 
+ 		31 & 87 & Undetected modifications possible & The function \textbf{tcsetattr} can modify parameters passed. \\
+ 		\hline 
+ 		32 & 87 & Ignored return value & The return value of \textbf{tcsetattr} is ignored. \\
+ 		\hline 
+ 		33 & 92 & Ignored return value & The return value of \textbf{ungetc} is ignored. \\
+ 		\hline 
+ 		34 & 100 & Function without parameter & The function \textbf{main} is defined without any parameters. \\
+ 		\hline 
+	 	\multicolumn{4}{|c|}{In function \textit{main}} \\
+		\hline 
+		35 & 110 & Undefined fields & Parameter \textbf{snake\_1} passed to the function \textbf{snake\_init} contains 8 undefined fields. \\
+		\hline 
+		36 & 110 & Undetected modifications possible & The function \textbf{snake\_init} can modify parameters passed. \\
+		\hline 
+		37 & 110 & Suspicious statement & The statement calling \textbf{snake\_init} has no effect. \\
+		\hline 
+		38 & 111 & Undefined fields & Parameter \textbf{pos1} passed to the function \textbf{pos\_init} contains 2 undefined fields. \\
+		\hline 
+		39 & 111 & Undetected modifications possible & The function \textbf{pos\_init} can modify parameters passed. \\
+		\hline 
+		40 & 111 & Suspicious statement & The statement calling \textbf{pos\_init} has no effect. \\
+		\hline 
+		41 & 112 & Undefined fields & Parameter \textbf{food1} passed to the function \textbf{food\_init} contains 3 undefined fields. \\
+		\hline 
+		42 & 112 & Undetected modifications possible & The function \textbf{food\_init} can modify parameters passed. \\
+		\hline 
+		43 & 112 & Suspicious statement & The statement calling \textbf{food\_init} has no effect. \\
+		\hline 
+		44 & 117 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		45 & 117 & Ignored return value & The return value of \textbf{system("clear")} is ignored. \\
+		\hline 
+		46 & 118 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		47 & 118 & Ignored return value & The return value of \textbf{system("stty -echo")} is ignored. \\
+		\hline 
+		48 & 120 & Undetected modifications possible & The function \textbf{snake\_place} can modify parameters passed. \\
+		\hline 
+		49 & 120 & Suspicious statement & The statement calling \textbf{snake\_place} has no effect. \\
+		\hline 
+		50 & 121 & Undetected modifications possible & The function \textbf{set\_borders} can modify parameters passed. \\
+		\hline 
+		51 & 121 & Suspicious statement & The statement calling \textbf{set\_borders} has no effect. \\
+		\hline 
+		52 & 122 & Undetected modifications possible & The function \textbf{food\_print} can modify parameters passed. \\
+		\hline 
+		53 & 122 & Suspicious statement & The statement calling \textbf{food\_print} has no effect. \\
+		\hline 
+		54 & 127 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		55 & 127 & Ignored return value & The return value of \textbf{system("/bin/stty raw")} is ignored. \\
+		\hline 
+		56 & 132 & Undetected modifications possible & The function \textbf{game\_over} can modify parameters passed. \\
+		\hline 
+		57 & 132 & Type Mismatch & Operand of ! (not) is \textit{non-boolean}, integer type-casted to be a boolean \\
+		\hline 
+		58 & 137 & Undetected modifications possible & The function \textbf{kbhit} can modify parameters passed. \\
+		\hline 
+		59 & 137 & Type Mismatch & Operand of ! (not) is \textit{non-boolean}, integer type-casted to be a boolean \\
+		\hline 
+		60 & 139 & Undetected modifications possible & The function \textbf{usleep} can modify parameters passed. \\
+		\hline 
+		61 & 139 & Type Mismatch & Function \textbf{usleep} expects arg1 to be \textit{\_\_useconds\_t} but gets int. \\
+		\hline
+		62 & 139 & Ignored return value & The return value of \textbf{usleep} is ignored. \\
+		\hline
+		63 & 140 & Undetected modifications possible & The function \textbf{snake\_move} can modify parameters passed. \\
+		\hline    
+		64 & 140 & Suspicious statement & The statement calling \textbf{snake\_move} has no effect. \\
+		\hline    
+		65 & 141 & Undetected modifications possible & The function \textbf{game\_over} can modify parameters passed. \\
+		\hline    
+		66 & 141 & Type Mismatch & Test expression for \textbf{if} is not boolean but int. \\ 
+		\hline    
+		67 & 143 & Problematic Control flow & Break statement inside nested loop. Must check that break is intended to only break the inner loop. \\
+		\hline    
+		68 & 137 & Problematic Control flow & Suspected infinte loop since no condition values are modified. \\
+		\hline    
+		69 & 150 & Function may access file state & The function \textbf{getchar()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline    
+		70 & 150 & Type Mismatch & Assignment of int (return value \textbf{getchar}) to char (snake1.direction) \\
+		\hline    
+		71 & 132 & Problematic Control flow & Suspected infinite loop since no condition values are modified. They maybe modified through unconstrained function calls. \\
+		\hline    
+		72 & 156 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline    
+		73 & 156 & Ignored return value & The return value of \textbf{system("/bin/stty cooked")} is ignored. \\
+		\hline    
+		74 & 157 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline    
+		75 & 157 & Ignored return value & The return value of \textbf{system("stty echo")} is ignored. \\
+		\hline    
+		76 & 158 & Function may access file state & The function \textbf{system()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline    
+		77 & 158 & Ignored return value & The return value of \textbf{system("clear")} is ignored. \\
+		\hline    
+		78 & 159 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline    
+		\multicolumn{4}{|c|}{In function \textit{snake\_init}} \\
+		\hline 
+		79 & 172 & \multirow{8}{90.0pt}{\textbf{Undocumented modification}: Externally visible object is modified by a function with no /*@modified@*/ annotation.} & Modification of \textbf{snake1$->$symbol}.  \\
+		80 & 173 & & Modification of \textbf{snake1$->$size}. \\
+		81 & 174 & & Modification of \textbf{snake1$->$direction}. \\
+		82 & 175 & & Modification of \textbf{snake1$->$prev\_direction}. \\
+		83 & 176 & & Modification of \textbf{snake1$->$tail\_X}. \\
+		84 & 177 & & Modification of \textbf{snake1$->$tail\_Y}. \\
+		85 & 178 & & Modification of \textbf{snake1$->$head\_X}. \\
+		86 & 179 & & Modification of \textbf{snake1$->$head\_Y}. \\
+		\hline 
+		87 & 174 & Type Mismatch & Assignment of int (100) to char(snake1$->$direction). \\
+		\hline 
+		88 & 175 & Type Mismatch & Assignment of int (115) to char(snake1$->$prev\_direction). \\
+		\hline 
+		89 & 183 & Inconsistent definition & Parameter \textbf{pos1} of \textit{snake\_place()} redeclared as possibly NULL storage, previously without NULL qualifier. \\
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{snake\_place}} \\
+		\hline 
+		89 & 188 & Undetected modifications possible & The function \textbf{gotoxy} can modify parameters passed. \\
+		\hline 
+		90 & 188 & Suspicious statement & The statement calling \textbf{gotoxy} has no effect. \\
+		\hline 
+		91 & 189 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		92 & 190 & Dereferencing a possibly NULL pointer & Parameter \textbf{pos1} with null qualifier is dereferenced. \\
+		\hline 
+		93 & 190 & \multirow{3}{90.0pt}{\textbf{Undocumented modification}} & Modification of \textbf{pos1$->$X[i]} \\
+		94 & 191 & & Modification of \textbf{pos1$->$Y[i]} \\ 
+		95 & 192 & & Modification of \textbf{snake1$->$tail\_X} \\
+		\hline 
+		96 & 191 & \textbf{Buffer overflow vulnerability} & Possibly out-of-bounds store. To assign value to \textbf{pos1$->$Y[i]}, it should be allocated a buffer of size atleast $i + 1$.  \\
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{set\_borders}} \\
+		\hline 
+		
+		97 & 202 & & \\
+		98 & 204 & \multirow{3}{80.0pt}{Undetected modifications possible}  & \multirow{3}{200.0pt}{The function \textbf{gotoxy} can modify parameters passed.} \\
+		99 & 210 & & \\
+		100 & 212 & & \\
+		\hline 
+		101 & 202 &  \multirow{4}{50.0pt}{Suspicious statement} & \multirow{4}{200.0pt}{The statement calling \textbf{gotoxy} has no effect.} 
+		\\
+		102 & 204 & & \\
+		103 & 210 & & \\
+		104 & 212 & & \\
+		\hline 
+		105 & 203 &  \multirow{4}{80.0pt}{Function may access file state} & \multirow{4}{200.0pt}{The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state.} 
+		\\
+		106 & 205 & & \\
+		107 & 211 & & \\
+		108 & 213 & & \\
+		\hline 
+		109 & 219 & Inconsistent definition & Parameter \textbf{score} of \textit{snake\_move()} redeclared as possibly NULL storage\\
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{snake\_move}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{move\_tail}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{move\_head}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{food\_init}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{food\_print}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{gotoxy}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{pos\_init}} \\
+		\hline 
+		
+		\hline 
+		\multicolumn{4}{|c|}{In function \textit{game\_over}} \\
+		\hline 
+ 		
+ 		\hline 
+ 	\end{longtable} 
 
 \end{document}
