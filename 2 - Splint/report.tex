@@ -150,7 +150,7 @@
  		\hline 
  		19 & 68 & Function declaration without parameter & Function \textbf{set\_borders} has no parameters. \\
  		\hline 
- 		\multicolumn{4}{|c|}{In function \textit{kbhit}} \\
+ 		\multicolumn{4}{|c|}{\textbf{In function \textit{kbhit}}} \\
  		\hline 
  		20 & 78 & Undefined fields & Parameter \textbf{oldt} passed to the function \textbf{tcgetattr} contains 8 undefined fields. \\
  		\hline 
@@ -182,7 +182,7 @@
  		\hline 
  		34 & 100 & Function without parameter & The function \textbf{main} is defined without any parameters. \\
  		\hline 
-	 	\multicolumn{4}{|c|}{In function \textit{main}} \\
+	 	\multicolumn{4}{|c|}{\textbf{In function \textit{main}}} \\
 		\hline 
 		35 & 110 & Undefined fields & Parameter \textbf{snake\_1} passed to the function \textbf{snake\_init} contains 8 undefined fields. \\
 		\hline 
@@ -272,7 +272,7 @@
 		\hline    
 		78 & 159 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
 		\hline    
-		\multicolumn{4}{|c|}{In function \textit{snake\_init}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{snake\_init}}} \\
 		\hline 
 		79 & 172 & \multirow{8}{90.0pt}{\textbf{Undocumented modification}: Externally visible object is modified by a function with no /*@modified@*/ annotation.} & Modification of \textbf{snake1$->$symbol}.  \\
 		80 & 173 & & Modification of \textbf{snake1$->$size}. \\
@@ -289,7 +289,7 @@
 		\hline 
 		89 & 183 & Inconsistent definition & Parameter \textbf{pos1} of \textit{snake\_place()} redeclared as possibly NULL storage, previously without NULL qualifier. \\
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{snake\_place}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{snake\_place}}} \\
 		\hline 
 		89 & 188 & Undetected modifications possible & The function \textbf{gotoxy} can modify parameters passed. \\
 		\hline 
@@ -303,10 +303,10 @@
 		94 & 191 & & Modification of \textbf{pos1$->$Y[i]} \\ 
 		95 & 192 & & Modification of \textbf{snake1$->$tail\_X} \\
 		\hline 
-		96 & 191 & \textbf{Buffer overflow vulnerability} & Possibly out-of-bounds store. To assign value to \textbf{pos1$->$Y[i]}, it should be allocated a buffer of size atleast $i + 1$.  \\
+		96 & 191 & \textbf{Buffer overflow vulnerability} & Possibly out-of-bounds store. To assign value to \textbf{pos1$->$Y[i]}, it must have been allocated a buffer of size atleast $i + 1$.  \\
 		
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{set\_borders}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{set\_borders}}} \\
 		\hline 
 		
 		97 & 202 & & \\
@@ -329,37 +329,150 @@
 		109 & 219 & Inconsistent definition & Parameter \textbf{score} of \textit{snake\_move()} redeclared as possibly NULL storage\\
 		
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{snake\_move}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{snake\_move}}} \\
 		\hline 
 		
+		110 & 221 & & The function \textbf{move\_head} can modify parameters passed. \\
+		111 & 225 & \multirow{2}{80.0pt}{Undetected modifications possible} & The function \textbf{move\_tail} can modify parameters passed. \\ 
+		112 & 233 & &The function \textbf{food\_print} can modify parameters passed. \\
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{move\_tail}} \\
+		113 & 221 & \multirow{3}{50.0pt}{Suspicious statement} & The statement calling \textbf{move\_head} has no effect. \\
+		114 & 225 & & The statement calling \textbf{move\_tail} has no effect. \\ 
+		115 & 233 & & The statement calling \textbf{food\_print} has no effect. \\
 		\hline 
+		116 & 229 & & Modification of \textbf{snake1$->$size} \\
+		117 & 230 & \multirow{3}{90.0pt}{\textbf{Undocumented modification}} & Modification of *score \\
+		118 & 231 & & Modification of \textbf{food1$->$X} \\
+		119 & 232 & & Modification of \textbf{food1$->$Y} \\
+		\hline 
+		120 & 230 & Dereferencing a possibly NULL pointer & Parameter \textbf{score} with null qualifier is dereferenced. \\
+		\hline 
+		121 & 231 & \multirow{2}{120.0pt}{Function access internal state} & \multirow{2}{300.0pt}{The function \textbf{rand()} can access file system state. It can cause undocumented modification of this state.} \\ 
+		122 & 232 & & \\
+		\hline 
+		123 & 230 & \multirow{2}{60.0pt}{Buffer overflow vulnerability} & Possibly out-of-bounds store. To assign value to \textbf{score[0]}, it must have been allocated a buffer.  \\
+		124 & 230 & & Possibly out-of-bounds read. To read value from \textbf{score[0]}, it must have been allocated a buffer. \\
 		
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{move\_head}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{move\_tail}}} \\
 		\hline 
 		
+		125 & 244 & Undetected modifications possible & The function \textbf{gotoxy} can modify parameters passed. \\
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{food\_init}} \\
+		126 & 244 & Suspicious statement & The statement calling \textbf{gotoxy} has no effect. \\
 		\hline 
+		127 & 245 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		128 & 251 & \multirow{2}{90.0pt}{\textbf{Undocumented modification}} & Modification of \textbf{pos1$->$X[i]} \\
+		129 & 252 & & Modification of \textbf{pos1$->$Y[i]} \\
+		\hline 
+		130 & 244 & \multirow{5}{60.0pt}{Buffer overflow vulnerability} & Possibly out-of-bounds read. To read value from \textbf{pos1$->$X[0]}, it must have been allocated a buffer.  \\
+		131 & 244 & & Possibly out-of-bounds read. To read value from \textbf{pos1$->$Y[0]}, it must have been allocated a buffer.  \\
+		132 & 251 & & Possibly out-of-bounds read. To read value from \textbf{pos1$->$X[i + 1]}, it must have been allocated a buffer of size atleast $i + 2$.  \\
+		133 & 252 & & Possibly out-of-bounds read. To read value from \textbf{pos1$->$Y[i + 1]}, it must have been allocated a buffer of size atleast $i + 2$.  \\
+		134 & 252 & & Possibly out-of-bounds store. To assign value to \textbf{pos1$->$Y[i]}, pos1 must have been allocated a buffer of size atleast $i + 1$.  \\
+		
 		
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{food\_print}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{move\_head}}} \\
 		\hline 
 		
+		135 & 263 & \multirow{4}{50.0pt}{Type Mismatch} & \multirow{4}{200.0pt}{Comparison between a char and int} \\
+		136 & 272 & &  \\
+		137 & 282 & & \\
+		138 & 292 & & \\
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{gotoxy}} \\
+		139 & 265 & \multirow{10}{90.0pt}{\textbf{Undocumented modification}} & \multirow{4}{200.0pt}{Modification of \textbf{snake1$->$head\_X}} \\
+		140 & 268 & &  \\
+		141 & 274 & &  \\
+		142 & 277 & &  \\
+		\cline{4-4}
+		143 & 284 & & \multirow{4}{200.0pt}{Modification of \textbf{snake1$->$head\_Y}} \\
+		144 & 287 & & \\
+		145 & 294 & & \\
+		146 & 297 & & \\
+		\cline{4-4}
+		147 & 307 & & Modification of \textbf{pos1$->$X[]} \\
+		148 & 308 & & Modification of \textbf{pos1$->$Y[]} \\
 		\hline 
+		149 & 310 & Undetected modifications possible & The function \textbf{gotoxy} can modify parameters passed. \\
+		\hline 
+		150 & 310 & Suspicious statement & The statement calling \textbf{gotoxy} has no effect. \\
+		\hline 
+		151 & 311 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		\hline 
+		152 & 308 &Buffer overflow vulnerability & Possibly out-of-bounds store. To assign value to \textbf{pos1$->$Y[snake1$->$size]}, it must have been allocated a buffer of size atleast $snake1->size +1$.  \\
 		
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{pos\_init}} \\
+		\multicolumn{4}{|c|}{\textbf{In function \textit{food\_init}}} \\
 		\hline 
 		
+		153 & 318 & \multirow{2}{120.0pt}{Function access internal state} & \multirow{2}{300.0pt}{The function \textbf{rand()} can access file system state. It can cause undocumented modification of this state.} \\ 
+		154 & 319 & & \\
 		\hline 
-		\multicolumn{4}{|c|}{In function \textit{game\_over}} \\
+		155 & 318 & \multirow{3}{90.0pt}{\textbf{Undocumented modification}} & Modification of \textbf{food1$->$X} \\
+		156 & 319 & &  Modification of \textbf{food1$->$Y} \\
+		157 & 320 & &  Modification of \textbf{food1$->$symbol} \\
+		
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{In function \textit{food\_print}}} \\
+		\hline 
+		
+		158 & 326 & Undetected modifications possible & The function \textbf{gotoxy} can modify parameters passed. \\
+		\hline 
+		159 & 326 & Suspicious statement & The statement calling \textbf{gotoxy} has no effect. \\
+		\hline 
+		160 & 327 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{In function \textit{gotoxy}}} \\
+		\hline 
+		
+		161 & 334 & Function may access file state & The function \textbf{printf()} can access file system state. It can cause undocumented modification of this state. \\
+		
+		\hline 
+		\multicolumn{4}{|c|}{\textbf{In function \textit{pos\_init}}} \\
+		\hline 
+		
+		162 & 341 & Undocumented modification & Modification of \textbf{*pos1} \\
+		\hline 
+		163 & 341 & Buffer overflow vulnerability & Possibly out-of-bounds store. To assign value to \textbf{pos1}, it must have been allocated a buffer of size atleast \textbf{sizeof(*pos1)} \\
+		\hline 
+		
+		\multicolumn{4}{|c|}{\textbf{In function \textit{game\_over}}} \\
 		\hline 
  		
+ 		164 & 351 & \multirow{2}{60.0pt}{Buffer overflow vulnerability} & Possibly out-of-bounds read. To read value from \textbf{pos1$->$X[i]}, it must have been allocated a buffer of size atleast $i + 1$.  \\
+ 		165 & 351 & & Possibly out-of-bounds read. To read value from \textbf{pos1$->$Y[i]}, it must have been allocated a buffer of size atleast $i + 1$.  \\
+ 		
+ 		\hline 
+ 		166 & 69 & Unused function & The function \textbf{print\_score} is declared but not used. \\
+ 		\hline 
+ 		167 & 58 & \multirow{12}{85.0pt}{Function exported but not used outside the file, should be declared with static keyword} & Function \textbf{snake\_init} \\
+ 		168 & 59 & & Function \textbf{pos\_init} \\
+ 		169 & 60 & & Function \textbf{food\_init}\\
+ 		170 & 61 & & Function \textbf{gotoxy}\\
+ 		171 & 62 & & Function \textbf{snake\_place}\\
+ 		172 & 63 & & Function \textbf{snake\_move}\\
+ 		173 & 64 & & Function \textbf{move\_tail}\\
+ 		174 & 65 & & Function \textbf{move\_head}\\
+ 		175 & 66 & & Function \textbf{food\_print} \\
+ 		176 & 67 & & Function \textbf{game\_over}\\
+ 		177 & 68 & & Function \textbf{set\_borders}\\
+ 		178 & 72 & & Function \textbf{kbhit}\\
+ 		\hline 
+ 		179 & 58 & & Function \textbf{snake\_init} \\
+ 		180 & 59 & & Function \textbf{pos\_init} \\
+ 		181 & 60 & & Function \textbf{food\_init}\\
+ 		182 & 61 & & Function \textbf{gotoxy}\\
+ 		183 & 62 &\multirow{7}{85.0pt}{Function exported but not declared in the header file} & Function \textbf{snake\_place}\\
+ 		184 & 63 & & Function \textbf{snake\_move}\\
+ 		185 & 64 & & Function \textbf{move\_tail}\\
+ 		186 & 65 & & Function \textbf{move\_head}\\
+ 		187 & 66 & & Function \textbf{food\_print} \\
+ 		188 & 67 & & Function \textbf{game\_over}\\
+ 		189 & 68 & & Function \textbf{set\_borders}\\
+ 		190 & 72 & & Function \textbf{kbhit}\\
  		\hline 
  	\end{longtable} 
 
