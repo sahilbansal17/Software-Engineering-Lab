@@ -1,3 +1,6 @@
+// Question: Implement and run the PROMELA model for a sample HelloWorld program with
+// printing the PIDs of the init process and the user process.
+
 proctype Hello() {
 	printf("Hello world, PID of hello process is : %d\n", _pid)
 }
