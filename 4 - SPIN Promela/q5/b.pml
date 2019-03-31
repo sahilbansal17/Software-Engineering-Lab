@@ -4,10 +4,11 @@ mtype = {milk, plain}
 chan chocolate = [1] of {bit, mtype}
 
 int amount = 0;
+int milk_count = 10, plain_count = 5;
+
 proctype vender() {
 	// models the vending machine
 	int coin_value;
-	int milk_count = 10, plain_count = 5;
 	do 
 	:: 	(milk_count > 0 || plain_count > 0) ->
 		coin ? coin_value;
@@ -43,7 +44,6 @@ proctype vender() {
 }
 
 proctype customer() {
-	// limitless appetite for chocolate, both plain and milk
 	bit status;
 	do
 	:: coin ! 5 -> 
@@ -61,9 +61,16 @@ proctype customer() {
 	od
 }
 
+proctype monitor() {
+	do
+	:: assert(amount == (10 - milk_count)*5 + (5 - plain_count)*10);
+	od
+}
+
 init {
 	atomic {
 		run customer();
 		run vender();
+		run monitor();
 	}
 }
