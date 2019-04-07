@@ -10,7 +10,7 @@ proctype vender() {
 	bit parity;
 	do 
 	:: 	coin ? parity, coin_value ->
-		assert(parity == 1);
+		// assert(parity == 1);
 		if
 		:: (parity == 1) ->
 			if 
