@@ -1,0 +1,1 @@
+// promela model to model fan controller
