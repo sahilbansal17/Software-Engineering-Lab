@@ -1,11 +1,11 @@
 1. 
 (a)
 The various windows displayed in the SPIN run are: 
-- Automata View
-- Data window
-- Message Sequence Chart
-- Process Sequence
-- Queue
+- Automata View: Display automata similar to FSM of the program
+- Data window: Display value of the variables
+- Message Sequence Chart: Display communication using channels
+- Process Sequence: Display sequence of execution
+- Queue: Display channels
 
 Running the program with different seeds provides different outputs in the data window.
 Seed = 1234567 gives an output of x = 2, y = 4

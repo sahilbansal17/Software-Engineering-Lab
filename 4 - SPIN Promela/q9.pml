@@ -18,6 +18,7 @@ proctype idle() {
 	do 
 	::	
 		if
+		// status is IDLE, go to POWER state
 		::	status == IDLE ->
 			idle_power ! POWER(1);
 			atomic {
@@ -37,6 +38,7 @@ proctype power() {
 	do 
 	::	
 		if
+		// status is POWER, go to FAN state
 		::	status == POWER ->
 			power_fan ! FAN(1);
 			atomic {
@@ -44,6 +46,7 @@ proctype power() {
 				status = FAN;
 				power_fan ? FAN(in);
 			}
+		// or go to IDLE state
 		::	status == POWER ->
 			idle_power ! IDLE(1);
 			atomic {
@@ -63,6 +66,7 @@ proctype fan() {
 	do
 	::	
 		if
+		// status is FAN, go to IDLE state
 		::	status == FAN ->
 			fan_idle ! IDLE(1);
 			atomic {
@@ -70,6 +74,7 @@ proctype fan() {
 				status = IDLE;
 				fan_idle ? IDLE(in);
 			}
+		// or go to POWER state
 		::	status == FAN ->
 			power_fan ! POWER(1);
 			atomic {

@@ -1,3 +1,5 @@
+// promela model for finding quotient and reminder - version 2
+
 byte in1, in2, a, b, quo, rem;
 bit load = 0, done = 1;
 
@@ -11,6 +13,7 @@ proctype quo_rem() {
 	od 
 }
 
+// environment process to initialize the variables
 proctype env() {
 	in1 = 7;
 	in2 = 2;

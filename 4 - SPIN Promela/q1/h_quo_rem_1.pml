@@ -1,17 +1,21 @@
+// promela model for finding quotient and reminder - version 1
+
 int a, b, quo, rem;
 bit done, load;
 
+// process to find quotient and remainder
 proctype quo_rem() {
 	do
-	:: (load == 1) -> quo = 0; rem = a; done = 0;
+	:: (load == 1) -> quo = 0; rem = a; done = 0; // initialization
 	:: (load != 1) -> if 
-					  :: (rem >= b) -> rem = rem - b; quo = quo + 1;
-					  :: (b > rem)  -> done = 1;
+					  :: (rem >= b) -> rem = rem - b; quo = quo + 1; // add to quo, decrease rem
+					  :: (b > rem)  -> done = 1; // done, can stop the division
 					  fi
 	od 
 }
 
 init {
+	// initialization
 	a = 7; 
 	b = 2;
 	done = 1;

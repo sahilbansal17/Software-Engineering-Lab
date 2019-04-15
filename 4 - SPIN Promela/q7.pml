@@ -1,3 +1,7 @@
+// traffic signals at intersection of a highway and a farm road
+// s1: signal for the highway
+// s2: signal for the farm road
+
 #define ON 1
 #define OFF 0
 
@@ -23,16 +27,23 @@ proctype HighwaySignal(mtype status) {
 	if able to read from chan_s2, then go GREEN since s2_status goes to ORANGE and then RED */
 	do
 	:: 	if 
+		// s2 requesting to go green
 		::  chan_s2 ? GREEN;
 			printf("Sensor is ON. S2 requesting to go GREEN.\n");
+			// change s1 status to orange and then red
 			s1_status = ORANGE;
 			s1_status = RED;
 			printf("S1 gone RED.\n");
+			// send status of s1 to chan_s1
 			chan_s1 ! RED;
+			// wait till s2 goes green
 			chan_s2 ? GREEN;
+		// s2 requesting to go red
 		::	chan_s2 ? RED;
+			// change s1 to green
 			s1_status = GREEN;
 			printf("S1 gone GREEN.\n");
+			// send s1 status to chan_s1
 			chan_s1 ! GREEN;
 		fi
 	od
@@ -46,16 +57,24 @@ proctype FarmRoadSignal(mtype status) {
 	s2_status = status;
 	do
 	::  if 
+		// sensor goes on
 		::  chan_sensor ? 1 ->
+			// request to go green
 			chan_s2 ! GREEN;
+			// wait till s1 goes green
 			chan_s1 ? RED;
+			// go green
 			s2_status = GREEN;
 			printf("S2 gone GREEN.\n");
+			// send its status to chan_s2
 			chan_s2 ! GREEN;
+		// sensore goes off
 		::  chan_sensor ? 0 ->
+			// goes orange then red
 			s2_status = ORANGE;
 			s2_status = RED;
 			printf("Sensor is OFF. S2 gone RED.\n");
+			// send status to chan_s2
 			chan_s2 ! RED;
 			chan_s1 ? GREEN;
 		fi
