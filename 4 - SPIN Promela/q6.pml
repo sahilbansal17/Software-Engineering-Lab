@@ -34,9 +34,9 @@ proctype sensor() {
 			outlet_status ! OPEN;
 			inlet_status ! CLOSED;
 		// water level between 20 and 30, keep the inlet open
-		::  (water_level > 20 && water_level < 30) -> 
-			inlet_status ! OPEN;
+		::  water_level > 20 && water_level < 30 ->
 			outlet_status ! CLOSED;
+			inlet_status ! OPEN;
 		fi
 	od
 }

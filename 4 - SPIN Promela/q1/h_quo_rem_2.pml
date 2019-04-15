@@ -8,7 +8,7 @@ proctype quo_rem() {
 	:: (load == 1) -> a = in1; b = in2; quo = 0; rem = a; done = 0;
 	:: (load != 1) -> if 
 					  :: (rem >= b) -> rem = rem - b; quo = quo + 1;
-					  :: (b > rem)  -> done = 1;
+					  :: (b > rem)  -> done = 1; break;
 					  fi
 	od 
 }

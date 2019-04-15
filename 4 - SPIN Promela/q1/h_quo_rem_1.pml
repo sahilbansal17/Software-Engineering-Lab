@@ -9,7 +9,7 @@ proctype quo_rem() {
 	:: (load == 1) -> quo = 0; rem = a; done = 0; // initialization
 	:: (load != 1) -> if 
 					  :: (rem >= b) -> rem = rem - b; quo = quo + 1; // add to quo, decrease rem
-					  :: (b > rem)  -> done = 1; // done, can stop the division
+					  :: (b > rem)  -> done = 1; break; // done, can stop the division
 					  fi
 	od 
 }
